@@ -19,6 +19,10 @@ y = alturaTela / 2
 xAzul = randint(40,600) 
 yAzul = randint(50, 430)
 
+pontos = 0
+fonte = pygame.font.SysFont('arial', 40, True, True)
+
+
 tela = pygame.display.set_mode((larguraTela, alturaTela))
 pygame.display.set_caption('JogoPyTest')
 
@@ -27,6 +31,8 @@ relogio = pygame.time.Clock() #coloca elemento timer no jogo
 while True:
     relogio.tick(40) #controla os frames do elemento time
     tela.fill((128, 128, 128))
+    mensagem = f'Pontos: {pontos}'
+    textoFormatado = fonte.render(mensagem, True, (255, 255, 255))
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
@@ -56,8 +62,10 @@ while True:
     retVermelho = pygame.draw.rect(tela, (255, 0, 0), (x, y, 40,40))
     retAzul = pygame.draw.rect(tela, (0, 0, 255), (xAzul, yAzul, 40,40))
 
-    if retVermelho.colliderect(retAzul):
+    if retVermelho.colliderect(retAzul): #aqui acontece a colisao
         xAzul = randint(40,600)
         yAzul = randint(50, 430)
+        pontos += 1 #pontos = pontos +1
 
+    tela.blit(textoFormatado, (400, 40))
     pygame.display.update()
