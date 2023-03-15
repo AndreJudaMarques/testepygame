@@ -9,12 +9,16 @@ from random import randint #funcao sorteia valores ()
 
 pygame.init() #inicia o jogo
 
+musicaDeFundo = pygame.mixer.music.load('BoxCat Games - Tricks.mp3')
+pygame.mixer.music.play(-1) #-1 faz a musica tocar em looping
+
+musicaDeColisao = pygame.mixer.Sound('point.wav') #sound deve ser .wav
 
 larguraTela = 640
 alturaTela = 480
 
-x = larguraTela / 2 - 20 #20 (referencia da largura do objeto)
-y = alturaTela / 2
+x = int(larguraTela / 2) - 20 #20 (referencia da largura do objeto)
+y = int(alturaTela / 2)
 
 xAzul = randint(40,600) 
 yAzul = randint(50, 430)
@@ -66,6 +70,10 @@ while True:
         xAzul = randint(40,600)
         yAzul = randint(50, 430)
         pontos += 1 #pontos = pontos +1
+        musicaDeColisao.play()
 
     tela.blit(textoFormatado, (400, 40))
     pygame.display.update()
+
+
+    
