@@ -25,7 +25,8 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             exit()
-
+        
+        ''' #exemplo de controle de teclas, porem a cada clique
         if event.type == KEYDOWN:
             if event.key == K_LEFT:
                 x -= 20
@@ -35,9 +36,17 @@ while True:
                 y -= 20
             if event.key == K_DOWN:
                 y += 20
+                '''
+    #controle de teclas continuo
+    if pygame.key.get_pressed()[K_LEFT]:
+        x -= 20
+    if pygame.key.get_pressed()[K_RIGHT]:
+        x += 20
+    if pygame.key.get_pressed()[K_UP]:
+        y -= 20
+    if pygame.key.get_pressed()[K_DOWN]:
+        y += 20
 
     pygame.draw.rect(tela, (255, 0, 0), (x, y, 40,40))
-    
-    
-    
+       
     pygame.display.update()
