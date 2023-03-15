@@ -9,10 +9,13 @@ from random import randint #funcao sorteia valores ()
 
 pygame.init() #inicia o jogo
 
+pygame.mixer.music.set_volume(0.5) #controla volume da musica de fundo
+
 musicaDeFundo = pygame.mixer.music.load('BoxCat Games - Tricks.mp3')
 pygame.mixer.music.play(-1) #-1 faz a musica tocar em looping
 
 musicaDeColisao = pygame.mixer.Sound('point.wav') #sound deve ser .wav
+# musicaDeColisao.set_volume(1) caso queira controlar este som, de 0 a 1
 
 larguraTela = 640
 alturaTela = 480
